@@ -4,10 +4,10 @@
 ## Getting the inverse of a matrix is an expensive operation and if they
 ## will be use multiple times, it is optimum to cache them. The functions
 ## makeCacheMatrix and cacheSolve will make it possible. Thru the power of
-## lexical scoping, makeCacheMatrix function creats a list functions to
-## set/get the matrix and set/get the inverse. The solveMatrix, checks if the
-## inverese in the cache and returns it, or calculates the inverse, saves it
-## in the cache and the returns it.
+## lexical scoping, makeCacheMatrix function accepts a matrix and returns
+## a list of functions to set/get the matrix and to set/get the inverse. The 
+## cacheSolve function checks if the inverse is in the cache and returns it, 
+## or calculates the inverse, saves it in the cache and then returns it.
 
 ## To test in R,
 ##
@@ -18,8 +18,8 @@
 ## round(cacheSolve(mat_cache_funs) %*% mat, 3)
 ##
 ## The first cacheSolve() should print the inverse if successfull.
-## The second call cacheSolve() will display "getting the cached data"
-## and returns the inverse matrix. The inverse multiplied by original matrix
+## The second call to cacheSolve() will display "getting cached data" and
+## returns the inverse matrix. The inverse multiplied by original matrix
 ## (%*% for matrix multiplication) should yield an identity matrix.
 
 
@@ -54,6 +54,7 @@ makeCacheMatrix <- function(x = matrix()) {
 ##                   saves it to cache and returns it. If the matrix is not
 ##                   defined such as null or not a square matrix or it is
 ##                   singular, R will return an error.
+##
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
